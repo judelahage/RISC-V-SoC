@@ -1,4 +1,4 @@
-module alu(
+module arithmetic_logic_unit(
     input [3:0] alu_control,
     input [31:0] a, b,
     output reg [31:0] result,

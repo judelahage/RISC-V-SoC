@@ -1,15 +1,17 @@
 `timescale 1ns / 1ps
 
 module regfile(
+
+        input clk,
         input [31:0] write_data,
         input write_enable,
-        output [31:0] read_data,
-        output [31:0] read_data2,
-        input clk,
 
         input [4:0] rs1, //first operand
         input [4:0] rs2, //second operand
         input [4:0] rd //result
+
+        output [31:0] read_data,
+        output [31:0] read_data2,
 
     );
 
