@@ -1,10 +1,15 @@
 module imem(
-    input [31:0] pc,
+    input [31:0] imem_addr,
     output [31:0] instruction
 );
 
 reg [31:0] blockram [0:255];
 
-assign instruction = blockram[pc[9:2]];
+initial begin
+    $readmemh("program.mem", blockram);
+end
+
+
+assign instruction = blockram[imem_addr[9:2]];
 
 endmodule

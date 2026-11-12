@@ -64,7 +64,7 @@ These rules apply to every conversation in this workspace, no exceptions:
 > Update this line yourself as you progress. The agent should treat this as
 > the *only* task in scope unless told otherwise.
 
-`Phase 1 / Task 5: Wire the datapath together into a working single-cycle core.`
+`Phase 1 / Task 6: Hand-assemble a small test program and verify correct behavior in simulation (waveform inspection).`
 
 ## Task breakdown
 
@@ -84,7 +84,7 @@ These rules apply to every conversation in this workspace, no exceptions:
       opcode/funct/rd/rs1/rs2/immediate fields).
 - [x] Task 4: Implement the ALU and control logic for the chosen instruction
       subset.
-- [ ] Task 5: Wire the datapath together into a working single-cycle core.
+- [x] Task 5: Wire the datapath together into a working single-cycle core.
 - [ ] Task 6: Hand-assemble a small test program and verify correct behavior
       in simulation (waveform inspection).
 

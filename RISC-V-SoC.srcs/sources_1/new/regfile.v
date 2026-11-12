@@ -8,10 +8,10 @@ module regfile(
 
         input [4:0] rs1, //first operand
         input [4:0] rs2, //second operand
-        input [4:0] rd //result
+        input [4:0] rd, //result
 
         output [31:0] read_data,
-        output [31:0] read_data2,
+        output [31:0] read_data2
 
     );
 

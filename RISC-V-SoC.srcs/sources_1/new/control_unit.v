@@ -6,7 +6,7 @@ module control_unit(
     output reg reg_write_enable,
     output reg mem_write_enable,
     output reg alu_src, //determines whether we pass rs2 or an imm to the alu -> 0 for rs2, 1 for imm
-    output reg [1:0] result_src, //determines whether destination register reads alu result, data memory, or PC+4 for jumps
+    output reg [1:0] rd_src_select, //determines whether destination register reads alu result, data memory, immediate or PC+4 for jumps
     output reg [3:0] alu_control, //determines what mathematical or logical operation alu should do
     output reg branch, //lets the PC know it should jump to PC+imm if a condition is true
     output reg jump //lets the PC know it should jump not just increment by 4
@@ -60,29 +60,29 @@ always@(*) begin
     reg_write_enable = 0;
     mem_write_enable = 0;
     alu_src = 0;
-    result_src = RESULT_ALU;
+    rd_src_select = RESULT_ALU;
     alu_control = ALU_ADD;
     //defaults----------------
     case(opcode)
         OPCODE_LUI: begin
-            result_src = RESULT_IMM;
+            rd_src_select = RESULT_IMM;
             reg_write_enable=1;
         end
         OPCODE_AUIPC: begin
-            result_src = RESULT_ALU;
+            rd_src_select = RESULT_ALU;
             reg_write_enable=1;
             alu_src = 1; //we are feeding an immediate into the alu not rs2. 
             alu_control = ALU_ADD;
         end
 
         OPCODE_JAL: begin
-            result_src=RESULT_PC4; //saves next pc into rd so that it can return after jumping
+            rd_src_select=RESULT_PC4; //saves next pc into rd so that it can return after jumping
             reg_write_enable=1; //we are writing into rd so we need to enable
             jump = 1;
         end
 
         OPCODE_JALR: begin
-            result_src=RESULT_PC4; //saves next pc into rd so that it can return after jumping
+            rd_src_select=RESULT_PC4; //saves next pc into rd so that it can return after jumping
             reg_write_enable=1; //we are writing into rd so we need to enable
             jump = 1;
             alu_src = 1; //target jump address is rs1 + imm so we need to send alu an imm
@@ -97,7 +97,7 @@ always@(*) begin
         end 
 
         OPCODE_LOAD: begin
-            result_src=RESULT_MEMORY; //rd is getting something from memory, not the alu and not the next pc inc.
+            rd_src_select=RESULT_MEMORY; //rd is getting something from memory, not the alu and not the next pc inc.
             reg_write_enable=1;
             alu_src = 1; //calculating memory address is rs1 + imm so we need to send alu an imm
             alu_control = ALU_ADD; //adding rs1 + imm so alu needs to add
@@ -109,7 +109,7 @@ always@(*) begin
             alu_control = ALU_ADD; //adding rs1 + imm so alu needs to add
         end
         OPCODE_OP_IMM: begin
-            result_src=RESULT_ALU;
+            rd_src_select=RESULT_ALU;
             reg_write_enable=1;
             alu_src = 1; //we are feeding an immediate to the alu not rs2
             case(funct3)
@@ -125,7 +125,7 @@ always@(*) begin
         end
 
         OPCODE_OP: begin
-            result_src=RESULT_ALU;
+            rd_src_select=RESULT_ALU;
             reg_write_enable=1;
             alu_src = 0; //we are feeding rs2 to the alu not an immediate
             case(funct3)
@@ -139,8 +139,6 @@ always@(*) begin
                 FUNCT3_SRL_SRA: alu_control = (funct7[5]) ? ALU_SRA : ALU_SRL;
             endcase
         end
-
-        default:
     endcase
 
     
