@@ -3,36 +3,12 @@
 module testbench();
 reg clk;
 reg rst;
-wire [31:0] imem_rdata;
-wire [31:0] dmem_rdata;
-wire [31:0] imem_addr;
-wire [31:0] dmem_addr;
-wire [31:0] dmem_wdata;
-wire dmem_wen;
+wire [15:0] led;
 
-core cpu(
+top topmodule(
     .clk(clk),
-    .rst(rst),
-    .imem_rdata(imem_rdata),
-    .dmem_rdata(dmem_rdata),
-    .imem_addr(imem_addr),
-    .dmem_addr(dmem_addr),
-    .dmem_wdata(dmem_wdata),
-    .dmem_wen(dmem_wen)
-);
-
-dmem data_memory(
-    .clk(clk),
-    .dmem_addr(dmem_addr),
-    .dmem_wdata(dmem_wdata),
-    .dmem_wen(dmem_wen),
-    .dmem_rdata(dmem_rdata)
-);
-
-imem instruction_memory(
-    .clk(clk),
-    .imem_addr(imem_addr),
-    .instruction(imem_rdata)
+    .btnC(rst),
+    .led(led)
 );
 
 

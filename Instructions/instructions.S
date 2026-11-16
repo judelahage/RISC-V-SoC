@@ -5,7 +5,8 @@ sw x4, 8(x3) #0x0041A423
 lw x5, 8(x3) #0x0081A283
 beq x4, x5, pass #0x00520463
 addi x6, x0, 1 #0x00100313
-pass: beq x0, x0, pass #0x00000063
-
+pass: lui x7, 0x10000 #100003B7
+sw x4, 0(x7) #0043A023
+beq x0, x0, done #0x00000063
 
 

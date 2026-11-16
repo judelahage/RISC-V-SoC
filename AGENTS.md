@@ -64,7 +64,7 @@ These rules apply to every conversation in this workspace, no exceptions:
 > Update this line yourself as you progress. The agent should treat this as
 > the *only* task in scope unless told otherwise.
 
-`Phase 1 / Task 6: Hand-assemble a small test program and verify correct behavior in simulation (waveform inspection).`
+`Phase 2 / Task 3: Load a hand-assembled program that blinks an LED, confirm it works on real hardware.`
 
 ## Task breakdown
 
@@ -85,12 +85,12 @@ These rules apply to every conversation in this workspace, no exceptions:
 - [x] Task 4: Implement the ALU and control logic for the chosen instruction
       subset.
 - [x] Task 5: Wire the datapath together into a working single-cycle core.
-- [ ] Task 6: Hand-assemble a small test program and verify correct behavior
+- [x] Task 6: Hand-assemble a small test program and verify correct behavior
       in simulation (waveform inspection).
 
 ### Phase 2: First hardware milestone (GPIO)
-- [ ] Task 1: Get instruction memory into Basys3 block RAM.
-- [ ] Task 2: Add a memory-mapped GPIO peripheral.
+- [x] Task 1: Get instruction memory into Basys3 block RAM.
+- [x] Task 2: Add a memory-mapped GPIO peripheral.
 - [ ] Task 3: Load a hand-assembled program that blinks an LED, confirm it
       works on real hardware.
 
