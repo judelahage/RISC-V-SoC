@@ -13,11 +13,12 @@ module core(
 //beginning with instruction fetch stage
 
 //next pc can either be pc+4 if sequential or it can be pc+immediate if jumping or banching
+wire [31:0] pc_current;
 wire [31:0] PCplus4;
 wire [31:0] PCtarget;
 wire [31:0] imm;
-assign PCplus4 = imem_addr + 4;
-assign PCtarget = imem_addr + imm;
+assign PCplus4 = pc_current + 4;
+assign PCtarget = pc_current + imm; //pc_current gets its value from the PCreg module
 
 
 wire [31:0] pc_next;
@@ -29,7 +30,9 @@ wire pc_next_select; //if pc_next_select is 1 then next_pc is pc+imm but if its 
 assign pc_next_select = (zero_flag & branch) | jump;
 assign pc_next = (pc_next_select) ? PCtarget : PCplus4;
 
-PCreg pc(.clk(clk), .rst(rst), .pc_next(pc_next), .pc(imem_addr));
+
+assign imem_addr = (rst) ? 0 : pc_next; 
+PCreg pc(.clk(clk), .rst(rst), .pc_next(imem_addr), .pc(pc_current));
 
 
 wire [4:0] rs2;

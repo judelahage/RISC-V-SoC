@@ -30,6 +30,7 @@ dmem data_memory(
 );
 
 imem instruction_memory(
+    .clk(clk),
     .imem_addr(imem_addr),
     .instruction(imem_rdata)
 );
