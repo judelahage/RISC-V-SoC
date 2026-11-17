@@ -64,7 +64,7 @@ These rules apply to every conversation in this workspace, no exceptions:
 > Update this line yourself as you progress. The agent should treat this as
 > the *only* task in scope unless told otherwise.
 
-`Phase 2 / Task 3: Load a hand-assembled program that blinks an LED, confirm it works on real hardware.`
+`Phase 3 / Task 1: Design the UART peripheral's memory-mapped interface (status/data registers).`
 
 ## Task breakdown
 
@@ -91,7 +91,7 @@ These rules apply to every conversation in this workspace, no exceptions:
 ### Phase 2: First hardware milestone (GPIO)
 - [x] Task 1: Get instruction memory into Basys3 block RAM.
 - [x] Task 2: Add a memory-mapped GPIO peripheral.
-- [ ] Task 3: Load a hand-assembled program that blinks an LED, confirm it
+- [x] Task 3: Load a hand-assembled program that blinks an LED, confirm it
       works on real hardware.
 
 ### Phase 3: UART peripheral
