@@ -64,7 +64,7 @@ These rules apply to every conversation in this workspace, no exceptions:
 > Update this line yourself as you progress. The agent should treat this as
 > the *only* task in scope unless told otherwise.
 
-`Phase 3 / Task 1: Design the UART peripheral's memory-mapped interface (status/data registers).`
+`Phase 3 / Task 2: Implement UART transmit logic.`
 
 ## Task breakdown
 
@@ -95,7 +95,7 @@ These rules apply to every conversation in this workspace, no exceptions:
       works on real hardware.
 
 ### Phase 3: UART peripheral
-- [ ] Task 1: Design the UART peripheral's memory-mapped interface (status/data
+- [x] Task 1: Design the UART peripheral's memory-mapped interface (status/data
       registers).
 - [ ] Task 2: Implement UART transmit logic.
 - [ ] Task 3: Implement UART receive logic.
