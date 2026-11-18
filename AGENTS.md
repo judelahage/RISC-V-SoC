@@ -64,7 +64,7 @@ These rules apply to every conversation in this workspace, no exceptions:
 > Update this line yourself as you progress. The agent should treat this as
 > the *only* task in scope unless told otherwise.
 
-`Phase 3 / Task 2: Implement UART transmit logic.`
+`Phase 3 / Task 3: Implement UART receive logic.`
 
 ## Task breakdown
 
@@ -97,7 +97,7 @@ These rules apply to every conversation in this workspace, no exceptions:
 ### Phase 3: UART peripheral
 - [x] Task 1: Design the UART peripheral's memory-mapped interface (status/data
       registers).
-- [ ] Task 2: Implement UART transmit logic.
+- [x] Task 2: Implement UART transmit logic.
 - [ ] Task 3: Implement UART receive logic.
 - [ ] Task 4: Verify firmware can print characters to a serial terminal.
 
